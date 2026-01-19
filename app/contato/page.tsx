@@ -39,7 +39,7 @@ export default function Contato() {
                 </a>
 
                 <a href={siteConfig.links.whatsappSecundarioUrl} target="_blank" className="block group border-t border-white/10 pt-4">
-                  <div className="text-xs text-primary mb-1">Administrativo / Outros</div>
+                  <div className="text-xs text-primary mb-1"> baixada </div>
                   <div className="font-bold text-lg group-hover:text-green-400 transition-colors">
                     {siteConfig.contato.whatsappSecundarioFormatado}
                   </div>

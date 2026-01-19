@@ -5,10 +5,10 @@ export const siteConfig = {
   url: "https://www.churrasconobrerio.com.br", 
   contato: {
     whatsappPrincipal: "5521986439151",
-    whatsappPrincipalFormatado: "(21) 98643-9151",
+    whatsappPrincipalFormatado: "(21) 98643-9151 RIO",
     
     whatsappSecundario: "5521971769933",
-    whatsappSecundarioFormatado: "(21) 97176-9933",
+    whatsappSecundarioFormatado: "(21) 97176-9933 BAIXADA",
     
     email: "contatochurrasconobrerj@gmail.com",
     
