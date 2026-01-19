@@ -44,10 +44,9 @@ const slides = [
   },
   {
     id: 4,
-    // Coquetel (Restaurado!)
-    image: "/img/tradicional.jpg",
-    imageMobile: "/img/tradicional.jpg",
-    title: "Coquetel Volante",
+    image: "/img/coquetel4.jpeg",
+    imageMobile: "/img/coquetel4.jpeg",
+    title: "Coquetel",
     subtitle: "Elegância e praticidade para seu evento",
     cta: "Ver Opções",
     link: "/cardapios/4"
