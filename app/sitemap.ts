@@ -2,6 +2,8 @@ import { MetadataRoute } from 'next';
 import { siteConfig } from '@/app/config/site';
 import { cardapios } from '@/app/data/cardapios';
 
+export const dynamic = 'force-static'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
 
