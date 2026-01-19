@@ -1,140 +1,95 @@
-import Link from "next/link";
 import { siteConfig } from "@/app/config/site";
-import { Instagram, Phone, Mail, MapPin, Star } from "lucide-react";
+import { Instagram, Phone, Mail, MapPin } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-zinc-950 border-t border-zinc-800 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-grid-premium opacity-5"></div>
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-primary/5 to-transparent rounded-full blur-3xl"></div>
-
-      <div className="relative container mx-auto px-4 py-16">
-        
-        {/* Top Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+    <footer className="bg-zinc-950 border-t border-zinc-800 pt-16 pb-8">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           
-          {/* Brand */}
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-2xl font-serif font-bold text-white mb-2">
-                CHURRASCO<span className="text-primary">NOBRE</span>
-              </h3>
-              <p className="text-xs text-gray-500 tracking-widest uppercase">
-                Tradição desde 2008
-              </p>
-            </div>
-            <p className="text-sm text-gray-400 leading-relaxed">
+          {/* Sobre */}
+          <div className="col-span-1 md:col-span-1">
+            <h3 className="text-xl font-serif font-bold text-white mb-4">{siteConfig.name}</h3>
+            <p className="text-gray-400 text-sm leading-relaxed mb-6">
               {siteConfig.description}
             </p>
-            
-            {/* Trust Badge */}
-            <div className="glass-gold px-4 py-3 rounded-xl inline-flex items-center gap-2">
-              <Star className="w-5 h-5 text-primary fill-primary" />
-              <div className="text-sm">
-                <div className="font-bold text-white">4.9/5.0</div>
-                <div className="text-xs text-gray-400">+500 Avaliações</div>
-              </div>
+            <div className="flex flex-col gap-2">
+               <a href={siteConfig.contato.instagram} target="_blank" className="flex items-center gap-2 text-gray-400 hover:text-primary transition-colors text-sm">
+                 <Instagram size={16} /> {siteConfig.contato.instagramLabel}
+               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Links Rápidos */}
           <div>
-            <h4 className="text-white font-bold mb-6 text-lg">Navegação</h4>
-            <ul className="space-y-3">
-              {[
-                { href: "/", label: "Início" },
-                { href: "/#cardapios", label: "Cardápios" },
-                { href: "/sobre", label: "Nossa História" },
-                { href: "/contato", label: "Contato" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2 group"
-                  >
-                    <span className="w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-white font-bold mb-6">Navegação</h4>
+            <ul className="space-y-3 text-sm text-gray-400">
+              <li><Link href="/" className="hover:text-primary transition-colors">Início</Link></li>
+              <li><Link href="/sobre" className="hover:text-primary transition-colors">Nossa História</Link></li>
+              <li><Link href="/#cardapios" className="hover:text-primary transition-colors">Cardápios</Link></li>
+              <li><Link href="/contato" className="hover:text-primary transition-colors">Solicitar Orçamento</Link></li>
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h4 className="text-white font-bold mb-6 text-lg">Contato</h4>
-            <ul className="space-y-4 text-sm">
-              <li>
-                <a
-                  href={siteConfig.links.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-3 text-gray-400 hover:text-primary transition-colors group"
-                >
-                  <Phone className="w-5 h-5 shrink-0 mt-0.5 group-hover:rotate-12 transition-transform" />
-                  <div>
-                    <div className="font-semibold text-white mb-1">Rio de Janeiro</div>
-                    <div>{siteConfig.contato.whatsappPrincipalFormatado}</div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${siteConfig.contato.email}`}
-                  className="flex items-start gap-3 text-gray-400 hover:text-primary transition-colors group"
-                >
-                  <Mail className="w-5 h-5 shrink-0 mt-0.5" />
-                  <div className="break-all">{siteConfig.contato.email}</div>
-                </a>
-              </li>
-              <li className="flex items-start gap-3 text-gray-400">
-                <MapPin className="w-5 h-5 shrink-0 mt-0.5" />
-                <div>Rio de Janeiro & Baixada Fluminense</div>
-              </li>
-            </ul>
-          </div>
-
-          {/* Social */}
-          <div>
-            <h4 className="text-white font-bold mb-6 text-lg">Redes Sociais</h4>
-            <div className="space-y-4">
-              <a
-                href={siteConfig.contato.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-gray-400 hover:text-pink-500 transition-colors group"
-              >
-                <div className="glass group-hover:glass-gold w-12 h-12 rounded-xl flex items-center justify-center transition-all">
-                  <Instagram className="w-5 h-5" />
-                </div>
-                <span className="text-sm">@churrasconobrerio</span>
-              </a>
+          {/* Contatos */}
+          <div className="col-span-1 md:col-span-2">
+            <h4 className="text-white font-bold mb-6">Fale Conosco</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               
-              {/* CTA */}
-              <div className="pt-4">
-                <Link href="/contato">
-                  <button className="w-full bg-gradient-to-r from-primary via-yellow-500 to-primary bg-[length:200%_100%] hover:bg-right-bottom text-black font-bold py-3 px-6 rounded-xl shadow-lg shadow-primary/20 transition-all duration-500 text-sm">
-                    Solicitar Orçamento
-                  </button>
-                </Link>
+              {/* Zaps */}
+              <div className="space-y-3">
+                <a href={siteConfig.links.whatsappUrl} target="_blank" className="flex items-center gap-3 text-gray-400 hover:text-green-500 transition-colors group">
+                  <div className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center group-hover:bg-green-500/20">
+                    <Phone size={14} />
+                  </div>
+                  <span className="text-sm">{siteConfig.contato.whatsappPrincipalFormatado}</span>
+                </a>
+                
+                <a href={siteConfig.links.whatsappSecundarioUrl} target="_blank" className="flex items-center gap-3 text-gray-400 hover:text-green-500 transition-colors group">
+                  <div className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center group-hover:bg-green-500/20">
+                    <Phone size={14} />
+                  </div>
+                  <span className="text-sm">{siteConfig.contato.whatsappSecundarioFormatado}</span>
+                </a>
               </div>
+
+              {/* Emails e Local */}
+              <div className="space-y-3">
+                
+                {/* Email RJ */}
+                <a href={`mailto:${siteConfig.contato.email}`} className="flex items-center gap-3 text-gray-400 hover:text-primary transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center">
+                    <Mail size={14} />
+                  </div>
+                  <span className="text-sm break-all">{siteConfig.contato.email}</span>
+                </a>
+
+                {/* Email Baixada */}
+                <a href={`mailto:${siteConfig.contato.emailBaixada}`} className="flex items-center gap-3 text-gray-400 hover:text-primary transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center">
+                    <Mail size={14} />
+                  </div>
+                  <span className="text-sm break-all">{siteConfig.contato.emailBaixada}</span>
+                </a>
+
+                <div className="flex items-center gap-3 text-gray-400 pt-2">
+                  <div className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center">
+                    <MapPin size={14} />
+                  </div>
+                  <span className="text-sm">Rio de Janeiro, RJ</span>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-zinc-800">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-            <p>
-              © {currentYear} {siteConfig.name}. Todos os direitos reservados.
-            </p>
-            <div className="flex items-center gap-4">
-              <span>Feito com 🔥 no Rio de Janeiro</span>
-            </div>
-          </div>
+        <div className="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
+          <p>© {currentYear} {siteConfig.name}. Todos os direitos reservados.</p>
+          <p>Desenvolvido com Next.js</p>
         </div>
       </div>
     </footer>
