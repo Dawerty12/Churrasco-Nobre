@@ -32,14 +32,14 @@ export default function Contato() {
               
               <div className="space-y-4">
                 <a href={siteConfig.links.whatsappUrl} target="_blank" className="block group">
-                  <div className="text-xs text-primary mb-1">Comercial / Orçamentos</div>
+                  <div className="text-xs text-primary mb-1">Orçamentos</div>
                   <div className="font-bold text-lg group-hover:text-green-400 transition-colors">
                     {siteConfig.contato.whatsappPrincipalFormatado}
                   </div>
                 </a>
 
                 <a href={siteConfig.links.whatsappSecundarioUrl} target="_blank" className="block group border-t border-white/10 pt-4">
-                  <div className="text-xs text-primary mb-1"> baixada </div>
+                  <div className="text-xs text-primary mb-1"> Orçamentos </div>
                   <div className="font-bold text-lg group-hover:text-green-400 transition-colors">
                     {siteConfig.contato.whatsappSecundarioFormatado}
                   </div>
