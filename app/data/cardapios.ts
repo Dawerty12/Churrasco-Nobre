@@ -21,8 +21,8 @@ export interface CardapioItem {
   texto3: string;
   variacoes?: Variacao[];
   itens?: string[]; 
-  imagemPrincipal: string; // Foto pequena do Card (Home)
-  imagemCapa: string;      // Foto grande da Página (Detalhes) - NOVO CAMPO
+  imagemPrincipal: string; 
+  imagemCapa: string;      
   imagensExtras: string[];
   destaque?: boolean;
 }
@@ -136,7 +136,7 @@ export const cardapios: CardapioItem[] = [
     texto2: "Opções variadas para agradar a todos os paladares, com serviço de garçons uniformizados.",
     texto3: "A melhor escolha para inaugurações e reuniões.",
     imagemPrincipal: "/img/coquetel1.jpeg",
-    imagemCapa: "/img/coquetel1.jpeg", // <--- TROQUE AQUI
+    imagemCapa: "/img/coquetel1.jpeg", 
     imagensExtras: ["/img/coquetel4.jpeg", "/img/coquetel5.jpeg"],
     variacoes: [
       {

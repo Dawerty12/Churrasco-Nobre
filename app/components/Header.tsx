@@ -20,6 +20,14 @@ export default function Header() {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+
+  const links = [
+    { href: "/", label: "INÍCIO" },
+    { href: "/sobre", label: "NOSSA HISTÓRIA" },
+    { href: "/#cardapios", label: "CARDÁPIOS" },
+    { href: "/galeria", label: "GALERIA" }, 
+  ];
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -52,11 +60,7 @@ export default function Header() {
           {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center gap-8">
             <ul className="flex items-center gap-8 text-sm font-medium">
-              {[
-                { href: "/", label: "INÍCIO" },
-                { href: "/#cardapios", label: "CARDÁPIOS" },
-                { href: "/sobre", label: "NOSSA HISTÓRIA" },
-              ].map((link) => (
+              {links.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -130,12 +134,8 @@ export default function Header() {
           >
             <div className="flex flex-col items-center justify-center h-full gap-8">
               <nav className="flex flex-col items-center gap-6">
-                {[
-                  { href: "/", label: "INÍCIO" },
-                  { href: "/#cardapios", label: "CARDÁPIOS" },
-                  { href: "/sobre", label: "NOSSA HISTÓRIA" },
-                  { href: "/contato", label: "CONTATO" },
-                ].map((link, index) => (
+                {/* Links do Menu Mobile + Contato */}
+                {[...links, { href: "/contato", label: "CONTATO" }].map((link, index) => (
                   <motion.div
                     key={link.href}
                     initial={{ opacity: 0, y: 20 }}

@@ -33,7 +33,6 @@ export default function MenuSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {cardapios.map((item, index) => {
-            // CORREÇÃO AQUI: Garante que nunca seja undefined
             const previewItens = item.itens ?? 
               (item.variacoes ? item.variacoes[0].itensPorCategoria.flatMap(c => c.itens) : []);
 

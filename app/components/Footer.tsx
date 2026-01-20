@@ -10,7 +10,6 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           
-          {/* Sobre */}
           <div className="col-span-1 md:col-span-1">
             <h3 className="text-xl font-serif font-bold text-white mb-4">{siteConfig.name}</h3>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
@@ -23,7 +22,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links Rápidos */}
           <div>
             <h4 className="text-white font-bold mb-6">Navegação</h4>
             <ul className="space-y-3 text-sm text-gray-400">
@@ -34,12 +32,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contatos */}
           <div className="col-span-1 md:col-span-2">
             <h4 className="text-white font-bold mb-6">Fale Conosco</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               
-              {/* Zaps */}
               <div className="space-y-3">
                 <a href={siteConfig.links.whatsappUrl} target="_blank" className="flex items-center gap-3 text-gray-400 hover:text-green-500 transition-colors group">
                   <div className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center group-hover:bg-green-500/20">
@@ -55,19 +51,13 @@ export default function Footer() {
                   <span className="text-sm">{siteConfig.contato.whatsappSecundarioFormatado}</span>
                 </a>
               </div>
-
-              {/* Emails e Local */}
               <div className="space-y-3">
-                
-                {/* Email RJ */}
                 <a href={`mailto:${siteConfig.contato.email}`} className="flex items-center gap-3 text-gray-400 hover:text-primary transition-colors">
                   <div className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center">
                     <Mail size={14} />
                   </div>
                   <span className="text-sm break-all">{siteConfig.contato.email}</span>
                 </a>
-
-                {/* Email Baixada */}
                 <a href={`mailto:${siteConfig.contato.emailBaixada}`} className="flex items-center gap-3 text-gray-400 hover:text-primary transition-colors">
                   <div className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center">
                     <Mail size={14} />

@@ -21,7 +21,6 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     return { title: "Cardápio não encontrado" };
   }
 
-  // SEM SEGURANÇA: Usa direto a imagemCapa para o compartilhamento
   return {
     title: `${cardapio.titulo} - Buffet Premium`,
     description: `${cardapio.resumo}`,
@@ -39,9 +38,6 @@ export default async function DetalheCardapio({ params }: { params: Promise<{ id
   const cardapio = cardapios.find((c) => c.id === Number(id));
 
   if (!cardapio) notFound();
-
-  // SEM SEGURANÇA: Removemos a linha que fazia o "fallback" (|| cardapio.imagemPrincipal)
-  // Se cardapio.imagemCapa não existir, o Next.js vai reclamar (o que ajuda a identificar o erro).
 
   return (
     <main className="min-h-screen text-gray-100 pb-24 pt-32">
@@ -79,7 +75,6 @@ export default async function DetalheCardapio({ params }: { params: Promise<{ id
               </div>
             </div>
 
-            {/* AQUI: Usando imagemCapa direto, sem proteção */}
             <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl shadow-primary/10 border border-zinc-800 group">
               <Image
                 src={cardapio.imagemCapa} 
@@ -100,7 +95,6 @@ export default async function DetalheCardapio({ params }: { params: Promise<{ id
             </div>
           </div>
 
-          {/* ÁREA DE ITENS: Abas ou Lista Simples */}
           <div className="mb-20 max-w-5xl mx-auto">
             {cardapio.variacoes ? (
               <CardapioTabs variacoes={cardapio.variacoes} />

@@ -16,7 +16,7 @@ const slides = [
     id: 1,
     // Churrasco
     image: "/img/churrasco.jpg",
-    imageMobile: "/img/churrasco.jpg", // Lembre-se de trocar por foto vertical se tiver!
+    imageMobile: "/img/churrasco.jpg", 
     title: "O Verdadeiro Churrasco",
     subtitle: "Tradição e sabor na sua casa",
     cta: "Ver Cardápios",
