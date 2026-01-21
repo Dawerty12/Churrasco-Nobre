@@ -20,7 +20,7 @@ const slides = [
     title: "O Verdadeiro Churrasco",
     subtitle: "Tradição e sabor na sua casa",
     cta: "Ver Cardápios",
-    link: "#cardapios"
+    link: "/cardapios/1"
   },
   {
     id: 2,
