@@ -89,7 +89,7 @@ export const cardapios: CardapioItem[] = [
       {
         nome: "Festa Completa",
         itensPorCategoria: [
-          { nome: "Espetinhos", itens: ["Carne", "Frango", "Linguiça", "Salsichão", "Queijo Coalho", "Coração de Frango", "Farofa Especial", "Molho à Campanha"] },
+          { nome: "Espetinhos", itens: ["Carne", "Frango", "Linguiça", "Salsichão", "Queijo Coalho", "Misto", "Coração de Frango", "Farofa Especial", "Molho à Campanha"] },
           { nome: "Caldos", itens: ["Feijão com Torresmo", "Caldo de Ervilha com Linguiça e Bacon", "Caldo Verde com Linguiça Calabresa"] },
           { nome: "Petiscos", itens: ["Cachorro Quente", "Pão de Alho", "Milho Cozido", "Batata Frita", "Pastéiszinhos", "Pipoca"] },
           { nome: "Doces", itens: ["Docinho de Coco", "Doce de Abóbora", "Bolo de Aipim", "Bolo de Milho", "Maria Mole", "Pé de Moleque", "Doce de Leite", "Maçã do Amor", "Bananinha", "Amendoim", "Paçoca", "Cocada"] }
@@ -98,7 +98,7 @@ export const cardapios: CardapioItem[] = [
       {
         nome: "Festa Econômica",
         itensPorCategoria: [
-          { nome: "Espetinhos", itens: ["Carne", "Frango", "Salsichão", "Coração de Frango", "Farofa Especial", "Molho à Campanha"] },
+          { nome: "Espetinhos", itens: ["Carne", "Frango", "Salsichão", "Farofa Especial", "Molho à Campanha"] },
           { nome: "Caldos", itens: ["Caldo de Ervilha com Linguiça e Bacon", "Caldo Verde com Linguiça Calabresa"] },
           { nome: "Petiscos", itens: ["Cachorro Quente", "Milho Cozido", "Batata Frita", "Pipoca"] },
           { nome: "Doces", itens: ["Bolo de Aipim", "Bolo de Milho", "Pé de Moleque", "Doce de Leite", "Maçã do Amor", "Bananinha", "Amendoim", "Paçoca", "Cocada"] }
@@ -144,7 +144,7 @@ export const cardapios: CardapioItem[] = [
         itensPorCategoria: [
           { nome: "Mesa Fixa", itens: ["Canapés", "Tábua de Frios", "Mousses e Pasta"] },
           { nome: "Mini Degustação", itens: ["Risoto de Camarão", "Penne ao Molho Calabresa", "Isca de Filé ao Molho Madeira"] },
-          { nome: "Salgados", itens: ["Camarão Empanado", "Bolinha de Queijo", "Bolinho de Bacalhau", "Rissole Napolitano", "Coxinha com Catupiry", "Coxinha sem Catupiry", "Quibe com Queijo", "Quibe sem Queijo", "Bolinho de Aipim com Carne Seca"] }
+          { nome: "Salgados", itens: ["Camarão", "Bolinha de Queijo", "Bolinho de Bacalhau", "Rissole Napolitano", "Coxinha com Catupiry", "Coxinha sem Catupiry", "Quibe com Queijo", "Quibe sem Queijo"] }
         ]
       }
     ]
