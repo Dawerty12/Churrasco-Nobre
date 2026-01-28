@@ -42,6 +42,8 @@ export default function Contato() {
 
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          {/* LADO ESQUERDO: INFORMAÇÕES */}
           <div className="lg:col-span-1 space-y-6">
             <div className="glass-gold rounded-2xl p-6 border-l-4 border-primary">
               <div className="flex items-center gap-3 mb-4">
@@ -103,6 +105,8 @@ export default function Contato() {
               </div>
             </div>
           </div>
+          
+          {/* LADO DIREITO: FORMULÁRIO */}
           <div className="lg:col-span-2">
              <div className="glass rounded-2xl p-8 md:p-10 border border-zinc-800">
               <h2 className="text-2xl font-bold text-white mb-2">Solicitar Orçamento</h2>
@@ -137,8 +141,9 @@ export default function Contato() {
                 {/* Telefone e Tipo de Cardápio */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                    <input type="tel" name="telefone" required placeholder="WhatsApp *" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none focus:border-primary transition-colors" />
-                   <select name="tipo-cardapio" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none cursor-pointer">
-                      <option value="">Cardápio de Interesse...</option>
+                   
+                   <select name="tipo-cardapio" required className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none cursor-pointer">
+                      <option value="">Cardápio de Interesse... *</option>
                       <option value="churrasco">Churrasco</option>
                       <option value="festa-junina">Festa Junina</option>
                       <option value="feijoada">Feijoada</option>
@@ -146,18 +151,19 @@ export default function Contato() {
                    </select>
                 </div>
                 
-                {/* Convidados e Data */}
+                {/* Convidados e Data - AGORA OBRIGATÓRIOS */}
                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <input type="number" name="convidados" placeholder="Nº Convidados" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none" />
-                  <input type="text" name="data" placeholder="Data do Evento" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none" />
+                  <input type="number" name="convidados" required placeholder="Nº Convidados *" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none" />
+                  <input type="text" name="data" required placeholder="Data do Evento *" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none" />
                 </div>
                 
-                {/* Localização */}
+                {/* Localização - AGORA OBRIGATÓRIO */}
                 <div>
-                  <input type="text" name="localizacao" placeholder="Bairro / Cidade" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none" />
+                  <input type="text" name="localizacao" required placeholder="Bairro / Cidade *" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none" />
                 </div>
                 
-                <textarea name="mensagem" rows={4} placeholder="Mensagem adicional..." className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none resize-none"></textarea>
+                {/* Mensagem - AGORA OBRIGATÓRIA */}
+                <textarea name="mensagem" required rows={4} placeholder="Mensagem adicional... *" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none resize-none"></textarea>
                 
                 <button 
                   type="submit" 
