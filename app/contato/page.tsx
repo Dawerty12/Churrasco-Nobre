@@ -1,172 +1,154 @@
-"use client";
+// app/contato/page.tsx
+"use client"; 
 
-import { siteConfig } from "@/app/config/site";
-import { Phone, Mail, MapPin, Instagram, Loader2 } from "lucide-react"; 
-import { useState } from "react";
+import { useState, useRef, FormEvent } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function Contato() {
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const formRef = useRef<HTMLFormElement>(null);
+  const [loading, setLoading] = useState(false);
+  const [sucesso, setSucesso] = useState(false);
+  const [erro, setErro] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const sendEmail = (e: FormEvent) => {
     e.preventDefault();
-    setStatus("loading");
+    setLoading(true);
+    setErro("");
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
+    // =================================================================
+    // QUANDO TIVER TEMPO, COLAR MEUS CÓDIGOS DO EMAILJS AQUI DENTRO:
+    // =================================================================
+    const serviceID = "service_xxxxxxx";  
+    const templateID = "template_xxxxxxx"; 
+    const publicKey = "xxxxxxxxxxxxxx";    
+    // =================================================================
 
-    try {
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
-      });
-      
-      setStatus("success");
-      form.reset();
-      setTimeout(() => setStatus("idle"), 5000);
-
-    } catch (error) {
-      console.error("Erro no envio:", error);
-      setStatus("error");
+    if (formRef.current) {
+      emailjs
+        .sendForm(serviceID, templateID, formRef.current, {
+          publicKey: publicKey,
+        })
+        .then(
+          () => {
+            setLoading(false);
+            setSucesso(true);
+            formRef.current?.reset();
+          },
+          (error: any) => {
+            setLoading(false);
+            setErro("Erro ao conectar. Verifique se as chaves do EmailJS estão configuradas.");
+            console.error("Erro detalhado:", error.text);
+          }
+        );
     }
   };
 
   return (
-    <main className="min-h-screen bg-black text-white pt-32 pb-24">
-      <div className="container mx-auto px-4 mb-16 text-center">
-        <h1 className="text-5xl font-serif font-bold mb-4">
-          Fale <span className="text-gradient-gold">Conosco</span>
-        </h1>
-        <p className="text-gray-400">Escolha o canal de sua preferência</p>
-      </div>
-
+    <main className="min-h-screen pt-24 pb-16 relative">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-1 space-y-6">
-            <div className="glass-gold rounded-2xl p-6 border-l-4 border-primary">
-              <div className="flex items-center gap-3 mb-4">
-                <Phone className="w-6 h-6 text-green-500" />
-                <h3 className="text-xl font-bold text-white">WhatsApp</h3>
-              </div>
-              <div className="space-y-4">
-                <a href={siteConfig.links.whatsappUrl} target="_blank" className="block group">
-                  <div className="text-xs text-primary mb-1">Orçamentos</div>
-                  <div className="font-bold text-lg group-hover:text-green-400 transition-colors">
-                    {siteConfig.contato.whatsappPrincipalFormatado}
+        
+        {/* Cabeçalho */}
+        <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-yellow-500">Fale Conosco</h1>
+            <p className="text-gray-400">Preencha o formulário ou chame no WhatsApp.</p>
+        </div>
+
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 bg-zinc-900/40 p-8 md:p-12 rounded-3xl border border-white/10 backdrop-blur-md">
+            
+            {/* Lado Esquerdo (Dados de Contato) */}
+            <div className="space-y-8">
+                <div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Canais de Atendimento</h3>
+                    <p className="text-gray-400">Rio de Janeiro e Baixada Fluminense.</p>
+                </div>
+
+                <div className="space-y-6">
+                    <div className="flex items-center gap-4 group">
+                        <div className="w-12 h-12 bg-zinc-800 rounded-full flex items-center justify-center text-yellow-500">
+                             {/* Ícone Telefone */}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                        </div>
+                        <div>
+                            <p className="text-sm text-gray-500">WhatsApp / Telefone</p>
+                            <p className="text-lg font-bold text-white">(21) 98643-9151</p>
+                        </div>
+                    </div>
+
+                    <div className="flex items-center gap-4 group">
+                        <div className="w-12 h-12 bg-zinc-800 rounded-full flex items-center justify-center text-yellow-500">
+                            {/* Ícone Email */}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                        </div>
+                        <div>
+                            <p className="text-sm text-gray-500">Email</p>
+                            <p className="text-lg font-bold text-white">contatochurrasconobrerj@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Lado Direito: Formulário */}
+            <div className="bg-black/40 p-8 rounded-2xl border border-white/5 shadow-xl">
+                
+                {sucesso ? (
+                  <div className="text-center py-12 animate-pulse-slow">
+                    <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 text-black">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-2">Recebemos seu pedido!</h3>
+                    <p className="text-gray-400">Em breve entraremos em contato.</p>
+                    <button onClick={() => setSucesso(false)} className="mt-8 text-yellow-500 hover:underline">Enviar nova mensagem</button>
                   </div>
-                </a>
-                <a href={siteConfig.links.whatsappSecundarioUrl} target="_blank" className="block group border-t border-white/10 pt-4">
-                  <div className="text-xs text-primary mb-1"> Orçamentos </div>
-                  <div className="font-bold text-lg group-hover:text-green-400 transition-colors">
-                    {siteConfig.contato.whatsappSecundarioFormatado}
-                  </div>
-                </a>
-              </div>
+                ) : (
+                  <form ref={formRef} onSubmit={sendEmail}>
+                      <div className="space-y-5">
+                          
+                          {/* Nome - Obrigatório */}
+                          <div>
+                              <label className="block text-sm font-medium text-gray-400 mb-1">Seu Nome</label>
+                              <input type="text" name="nome" required className="w-full bg-zinc-900/80 border border-zinc-700 rounded-lg p-3 text-white focus:border-yellow-500 outline-none" placeholder="Ex: Lucas Silva" />
+                          </div>
+
+                          {/* Email - Obrigatório */}
+                          <div>
+                              <label className="block text-sm font-medium text-gray-400 mb-1">Seu E-mail</label>
+                              <input type="email" name="email" required className="w-full bg-zinc-900/80 border border-zinc-700 rounded-lg p-3 text-white focus:border-yellow-500 outline-none" placeholder="cliente@email.com" />
+                          </div>
+
+                          {/* WhatsApp - Obrigatório */}
+                          <div>
+                              <label className="block text-sm font-medium text-gray-400 mb-1">Seu WhatsApp</label>
+                              <input type="tel" name="telefone" required className="w-full bg-zinc-900/80 border border-zinc-700 rounded-lg p-3 text-white focus:border-yellow-500 outline-none" placeholder="(21) 99999-9999" />
+                          </div>
+
+                          {/* Select */}
+                          <div>
+                              <label className="block text-sm font-medium text-gray-400 mb-1">Tipo de Evento</label>
+                              <select name="evento" className="w-full bg-zinc-900/80 border border-zinc-700 rounded-lg p-3 text-white focus:border-yellow-500 outline-none">
+                                  <option>Churrasco Tradicional</option>
+                                  <option>Casamento</option>
+                                  <option>Festa Junina</option>
+                                  <option>Coquetel</option>
+                                  <option>Feijoada</option>
+                                  <option>Outro</option>
+                              </select>
+                          </div>
+
+                          {/* Mensagem */}
+                          <div>
+                              <label className="block text-sm font-medium text-gray-400 mb-1">Mensagem</label>
+                              <textarea name="mensagem" rows={4} className="w-full bg-zinc-900/80 border border-zinc-700 rounded-lg p-3 text-white focus:border-yellow-500 outline-none" placeholder="Quantas pessoas? Data? Local?"></textarea>
+                          </div>
+
+                          {erro && <p className="text-red-500 text-sm">{erro}</p>}
+
+                          <button type="submit" disabled={loading} className="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-4 rounded-lg transition-transform hover:scale-[1.02] shadow-lg shadow-yellow-500/10 disabled:opacity-50">
+                              {loading ? "Enviando..." : "ENVIAR SOLICITAÇÃO"}
+                          </button>
+                      </div>
+                  </form>
+                )}
             </div>
-
-            <div className="glass rounded-2xl p-6">
-               <div className="flex items-center gap-3 mb-4">
-                <Mail className="w-6 h-6 text-primary" />
-                <h3 className="text-lg font-bold text-white">E-mails</h3>
-              </div>
-              <div className="space-y-3">
-                 <a href={`mailto:${siteConfig.contato.email}`} className="block group">
-                    <span className="text-xs text-gray-400 block mb-1">Rio de Janeiro</span>
-                    <span className="text-sm font-medium break-all group-hover:text-primary transition-colors">
-                      {siteConfig.contato.email}
-                    </span>
-                 </a>
-                 <a href={`mailto:${siteConfig.contato.emailBaixada}`} className="block group border-t border-white/10 pt-3">
-                    <span className="text-xs text-gray-400 block mb-1">Baixada Fluminense</span>
-                    <span className="text-sm font-medium break-all group-hover:text-primary transition-colors">
-                      {siteConfig.contato.emailBaixada}
-                    </span>
-                 </a>
-              </div>
-            </div>
-
-            <div className="glass rounded-2xl p-6 space-y-4">
-              <a href={siteConfig.contato.instagram} target="_blank" className="flex items-center gap-3 text-gray-300 hover:text-pink-500 transition-colors">
-                <div className="w-10 h-10 rounded-lg bg-zinc-900 flex items-center justify-center">
-                   <Instagram className="w-5 h-5" />
-                </div>
-                <span className="font-medium">{siteConfig.contato.instagramLabel}</span>
-              </a>
-              <div className="flex items-center gap-3 text-gray-300 pt-4 border-t border-white/10">
-                 <div className="w-10 h-10 rounded-lg bg-zinc-900 flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5 text-primary" />
-                 </div>
-                 <div>
-                    <div className="text-xs text-gray-400">Atendemos</div>
-                    <div className="text-sm font-bold">Rio de Janeiro e Baixada</div>
-                 </div>
-              </div>
-            </div>
-          </div>
-          <div className="lg:col-span-2">
-             <div className="glass rounded-2xl p-8 md:p-10 border border-zinc-800">
-              <h2 className="text-2xl font-bold text-white mb-2">Solicitar Orçamento</h2>
-              
-              {status === "success" && (
-                <div className="mb-6 p-4 bg-green-500/20 border border-green-500 rounded-xl text-green-200 animate-pulse">
-                  ✅ Solicitação enviada com sucesso! Em breve entraremos em contato.
-                </div>
-              )}
-
-              {status === "error" && (
-                <div className="mb-6 p-4 bg-red-500/20 border border-red-500 rounded-xl text-red-200">
-                  ❌ Ocorreu um erro. Por favor, tente pelo WhatsApp.
-                </div>
-              )}
-
-               <form 
-                name="contato" 
-                method="POST" 
-                data-netlify="true" 
-                onSubmit={handleSubmit}
-                className="space-y-6 mt-6"
-              >
-                <input type="hidden" name="form-name" value="contato" />
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <input type="text" name="nome" required placeholder="Nome Completo *" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none focus:border-primary transition-colors" />
-                  <input type="tel" name="telefone" required placeholder="WhatsApp *" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none focus:border-primary transition-colors" />
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                   <select name="tipo-cardapio" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none cursor-pointer">
-                      <option value="">Cardápio de Interesse...</option>
-                      <option value="churrasco">Churrasco</option>
-                      <option value="festa-junina">Festa Junina</option>
-                      <option value="feijoada">Feijoada</option>
-                      <option value="coquetel">Coquetel</option>
-                   </select>
-                   <input type="number" name="convidados" placeholder="Nº Convidados" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none" />
-                </div>
-                
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <input type="date" name="data" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none" />
-                  <input type="text" name="localizacao" placeholder="Bairro / Cidade" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none" />
-                </div>
-                
-                <textarea name="mensagem" rows={4} placeholder="Mensagem adicional..." className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none resize-none"></textarea>
-                
-                <button 
-                  type="submit" 
-                  disabled={status === "loading" || status === "success"}
-                  className="w-full bg-primary text-black font-bold py-4 rounded-xl hover:bg-yellow-400 transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                >
-                  {status === "loading" ? (
-                    <>
-                      <Loader2 className="animate-spin" /> Enviando...
-                    </>
-                  ) : (
-                    "Enviar Solicitação"
-                  )}
-                </button>
-              </form>
-            </div>
-          </div>
         </div>
       </div>
     </main>
