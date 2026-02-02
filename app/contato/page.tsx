@@ -7,6 +7,7 @@ import { useState } from "react";
 export default function Contato() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   
+  // Estado para capturar o email e duplicar ele
   const [emailValue, setEmailValue] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -46,7 +47,7 @@ export default function Contato() {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
           
-          {/* LADO ESQUERDO: INFORMAÇÕES */}
+          {/* LADO ESQUERDO */}
           <div className="lg:col-span-1 space-y-6">
             <div className="glass-gold rounded-2xl p-6 border-l-4 border-primary">
               <div className="flex items-center gap-3 mb-4">
@@ -133,15 +134,17 @@ export default function Contato() {
                 onSubmit={handleSubmit}
                 className="space-y-6 mt-6"
               >
+                {/* CAMPO IMPORTANTE: O NOME TEM QUE SER IGUAL AO DO ARQUIVO HTML */}
                 <input type="hidden" name="form-name" value="orcamento_final" />
                 
+                {/* Campo duplicado (vai aparecer no texto) */}
                 <input type="hidden" name="email_do_cliente" value={emailValue} />
 
                 {/* Nome e Email */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <input type="text" name="nome" required placeholder="Nome Completo *" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none focus:border-primary transition-colors" />
                   
-                  {/* Email Original  */}
+                  {/* Email Original (Botão Responder) */}
                   <input 
                     type="email" 
                     name="email" 
