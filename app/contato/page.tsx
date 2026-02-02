@@ -7,7 +7,6 @@ import { useState } from "react";
 export default function Contato() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   
-  // ESTADO PARA DUPLICAR O EMAIL
   const [emailValue, setEmailValue] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,7 +25,7 @@ export default function Contato() {
       
       setStatus("success");
       form.reset();
-      setEmailValue(""); // Limpa o email duplicado também
+      setEmailValue(""); 
       setTimeout(() => setStatus("idle"), 5000);
 
     } catch (error) {
@@ -128,22 +127,21 @@ export default function Contato() {
               )}
 
                <form 
-                name="contato" 
+                name="orcamento_final" 
                 method="POST" 
                 data-netlify="true" 
                 onSubmit={handleSubmit}
                 className="space-y-6 mt-6"
               >
-                <input type="hidden" name="form-name" value="contato" />
+                <input type="hidden" name="form-name" value="orcamento_final" />
                 
-                {/* CAMPO ESPIÃO: Copia o valor do email para aparecer no corpo do texto */}
-                <input type="hidden" name="email_escrito" value={emailValue} />
+                <input type="hidden" name="email_do_cliente" value={emailValue} />
 
                 {/* Nome e Email */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <input type="text" name="nome" required placeholder="Nome Completo *" className="w-full bg-zinc-900/50 border border-zinc-700 rounded-xl p-4 text-white outline-none focus:border-primary transition-colors" />
                   
-                  {/* Input de Email com Estado */}
+                  {/* Email Original  */}
                   <input 
                     type="email" 
                     name="email" 
