@@ -80,6 +80,9 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "seu-codigo-google-search-console",
+    other: {
+      "msvalidate.01": "70DE0F4F284D7117334380AA211E7C54",
+    },
   },
 };
 
