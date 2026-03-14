@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { siteConfig } from "@/app/config/site";
-import { ArrowLeft, CheckCircle2, Phone } from "lucide-react";
+import { ArrowDown, ArrowLeft, CheckCircle2, Phone } from "lucide-react";
 import CardapioTabs from "@/app/components/CardapioTabs";
 
 export function generateStaticParams() {
@@ -65,13 +65,17 @@ export default async function DetalheCardapio({ params }: { params: Promise<{ id
               </h1>
               <p className="text-xl text-gray-400 leading-relaxed">{cardapio.resumo}</p>
               
-              <div className="pt-4">
+              <div className="pt-4 flex flex-wrap gap-4">
                  <Link href="/contato">
                     <button className="bg-gradient-to-r from-primary via-yellow-500 to-primary bg-[length:200%_100%] hover:bg-right-bottom text-black font-bold px-8 py-4 rounded-full flex items-center justify-center gap-2 shadow-xl shadow-primary/30 transition-all duration-500">
                       <Phone className="w-5 h-5" />
                       <span>Solicitar Orçamento</span>
                     </button>
                   </Link>
+                  <a href="#cardapio-conteudo" className="border-2 border-primary text-primary hover:bg-primary hover:text-black font-bold px-8 py-4 rounded-full flex items-center justify-center gap-2 transition-all duration-300">
+                    <ArrowDown className="w-5 h-5" />
+                    <span>Ver Cardápio</span>
+                  </a>
               </div>
             </div>
 
@@ -95,7 +99,7 @@ export default async function DetalheCardapio({ params }: { params: Promise<{ id
             </div>
           </div>
 
-          <div className="mb-20 max-w-5xl mx-auto">
+          <div id="cardapio-conteudo" className="mb-20 max-w-5xl mx-auto scroll-mt-24">
             {cardapio.variacoes ? (
               <CardapioTabs variacoes={cardapio.variacoes} />
             ) : (
