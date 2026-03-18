@@ -41,7 +41,7 @@ export const cardapios: CardapioItem[] = [
     destaque: true,
     variacoes: [
       {
-        nome: "Pacote Econômico",
+        nome: "Pacote Clássico",
         itensPorCategoria: [
           { nome: "Entradas", itens: ["Pão de Alho", "Linguiça de Pernil"] },
           { nome: "Guarnições", itens: ["Arroz Branco", "Molho à Campanha", "Farofa"] },
