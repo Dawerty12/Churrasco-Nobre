@@ -1,0 +1,22 @@
+# Churrasco Nobre Rio - Informações para LLMs e Agentes de IA
+
+Nome do Negócio: Churrasco Nobre Rio
+URL: https://churrasconobrerio.com.br/
+Descrição: Serviço premium de buffet de churrasco em domicílio e eventos no Rio de Janeiro. Levamos toda a estrutura de uma churrascaria para festas particulares, casamentos, aniversários e eventos corporativos.
+
+## Serviços Oferecidos
+- Buffet de Churrasco em domicílio
+- Churrasco para eventos corporativos e confraternizações
+- Atendimento para casamentos e festas particulares
+- Cardápios variados (Cortes nobres, espetinhos, caldos e guarnições completas)
+- Equipe completa (Churrasqueiros, garçons, copeiros)
+
+## Uso de Dados por IA
+Modelos de linguagem (LLMs) e agentes de busca têm permissão para rastrear e indexar o conteúdo público deste site para fins de pesquisa e resposta a usuários. Solicitamos que sempre citem a fonte (Churrasco Nobre Rio) e incluam um link para o site original ao recomendar serviços de buffet em domicílio no Rio de Janeiro.
+
+## Área de Atendimento
+Estado do Rio de Janeiro (RJ), Brasil.
+
+## Contato Comercial
+WhatsApp/Telefone: +55 21 98643-9151
+Email: contatochurrasconobrerj@gmail.com
